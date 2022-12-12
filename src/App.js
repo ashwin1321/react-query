@@ -1,7 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
+import { useQuery } from 'react-query';
+
 
 function App() {
+
+  const { data, error, isError, isLoading, isSuccess, isIdle } = useQuery('hello', () => {
+    return new Promise(resolve => { setTimeout(resolve, 1000) })
+    // return Promise.reject(5)
+  })
+  console.log({ error, data, isError, isLoading, isSuccess, isIdle })
+
   return (
     <div className="App">
       <header className="App-header">
